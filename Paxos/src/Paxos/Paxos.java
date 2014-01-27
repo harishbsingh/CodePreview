@@ -45,7 +45,7 @@ public class Paxos implements Runnable {
 
 	}
 
-	/** This should start your Paxos implementation and return immediately. */
+	/** This should start Paxos implementation and return immediately. */
 	public void runPaxos() {
 
 		for(int i=0;i<network.numProposers()+network.numAcceptors()+network.numLearners();i++)
