@@ -458,7 +458,7 @@ public class Paxos implements Runnable {
 		}
 		else if(index>=(network.numProposers()+network.numAcceptors) && index<(network.numProposers()+network.numAcceptors()+network.numLearners()))
 		{
-
+			/*Learners*/
 			while(true) 
 			{
 				ArrayList<String> messages = new ArrayList<String>();
