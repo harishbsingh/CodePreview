@@ -22,12 +22,6 @@ import play.test.Helpers;
  */
 public class ApplicationTest {
 
-	@Test
-	public void testIndex() {
-		Result result = Helpers.callAction(controllers.routes.ref.Application
-				.index(), new FakeRequest(GET, "/"));
-		assertThat(result).isNotNull();
-	}
 
 	@Test
 	public void testFizzBuzz() {
