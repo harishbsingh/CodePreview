@@ -1,0 +1,67 @@
+@(form: Form[com.lendup.twiliocaller.models.Caller])
+@helper.form(com.lendup.controllers.routes.TwilioApplication.callScheduler) {
+	         
+	 @if(form.hasGlobalErrors) {
+	 	<div class="alert alert-error">
+            <a class="close" data-dismiss="alert">�</a>
+            @form.globalError.message
+        </div>
+                	
+     }
+            
+   <body bgcolor="white">
+   <h1>Make a Call</h1>
+
+   <p>
+       <input type="text" name="callFrom" length= 100 placeholder="Call From" value="@form("callFrom").value">
+       @for(error <- form("callFrom").errors) {
+          <p>@error.message</p>
+       }
+   </p>
+   
+   <p>
+       <input type="text" name="callTo" length= 100 placeholder="Call To" value="@form("callTo").value">
+       @for(error <- form("callTo").errors) {
+          <p>@error.message</p>
+       }       
+   </p>
+   
+   <p>
+       <input type="number" name="days" length= 100 placeholder="Delay in Days" value="@form("days").value"> 
+       @for(error <- form("days").errors) {
+          <p>@error.message</p>
+       }      
+
+       <input type="number" name="hours" length= 100 placeholder="Delay in Hours" value="@form("hours").value">
+        @for(error <- form("hours").errors) {
+          <p>@error.message</p>
+       }
+
+       <input type="number" name="minutes" length= 100 placeholder="Delay in minutes" value="@form("minutes").value">
+       @for(error <- form("minutes").errors) {
+          <p>@error.message</p>
+       }
+
+       <input type="number" name="seconds" length= 100 placeholder="Delay in Seconds" value="@form("seconds").value">
+       @for(error <- form("seconds").errors) {
+          <p>@error.message</p>
+       }
+   </p>
+   
+   
+   <p>
+       <button type="submit">Schedule</button>
+   </p>
+
+}
+
+   @helper.form(com.lendup.controllers.routes.TwilioApplication.getCallRecords) {
+	   <p>
+       <button type="submit" >History</button>
+       </p>
+   }
+   
+	</body>
+
+
+

@@ -1,0 +1,58 @@
+@(list: List[com.lendup.twiliocaller.models.Caller])
+
+<head>
+<style>
+table,th,td
+{
+border:1px solid black;
+border-collapse:collapse;
+}
+th,td
+{
+padding:5px;
+}
+</style>
+</head>
+<body>
+
+<table style="width:300px">
+<tr>
+  <th></th>
+  <th>Caller</th>		
+  <th>Call To</th>
+  <th>Delay in Days</th>
+  <th>Delay in Hours</th>
+  <th>Delay in Minutes</th>
+  <th>Delay in Seconds</th>
+  <th>Digits</th>
+</tr>
+
+@for(caller <- list){
+
+
+<tr>
+
+<td><a href="@{com.lendup.controllers.routes.TwilioApplication.getFizzBuzzDirectly(caller.id)}">Call Now</a></td>
+
+<td> @caller.callFrom</td>
+<td> @caller.callTo</td>
+<td> @caller.days</td>
+<td> @caller.hours</td>
+<td> @caller.minutes</td>
+<td> @caller.seconds</td>
+<td> @caller.getDigits()</td>
+
+</tr>
+
+
+}
+
+</table>
+
+@helper.form(com.lendup.controllers.routes.TwilioApplication.callFromBrowser) {
+
+	   <p>
+       <button type="submit" >Back</button>
+   </p>
+	}
+</body>

@@ -1,0 +1,24 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+
+GET     /                           com.lendup.controllers.TwilioApplication.callFromBrowser()
+GET     /handle-key/:days/:hours/:minutes/:seconds/          com.lendup.controllers.TwilioApplication.playFizzBuzz(days: Long, hours: Long, minutes: Long, seconds: Long )
+GET     /insecure/forbidden/goodBye com.lendup.controllers.TwilioApplication.forbiddenUrl()
+GET     /call                       com.lendup.controllers.TwilioApplication.forbiddenUrl()
+
+GET     /v1/twilio                  com.lendup.controllers.TwilioApplication.twilioVoiceCall()
+GET     /v1/twilio/delay/:days/:hours/:minutes/:seconds     com.lendup.controllers.TwilioApplication.twilioVoiceCallWithDelay(days: Long, hours: Long, minutes: Long, seconds: Long ) 
+
+POST    /call                       com.lendup.controllers.TwilioApplication.callScheduler()
+
+GET     /getCallRecords                       com.lendup.controllers.TwilioApplication.getCallRecords()
+GET     /getDirect/:id                       com.lendup.controllers.TwilioApplication.getFizzBuzzDirectly(id : Long)
+
+GET     /v1/twilio/directCall/:number                    com.lendup.controllers.TwilioApplication.getTwimlDirectly(number : String)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
