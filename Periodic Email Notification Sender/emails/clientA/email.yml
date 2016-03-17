@@ -1,0 +1,12 @@
+!!com.rmo.config.EmailTemplateConfiguration
+attachments:
+- /Users/bla/blabla/emails/clientC/email.yml
+- /Users/bla/blabla/emails/clientB/email.yml
+emailCc: [
+  ]
+emailSubject: BTest
+emailTo:
+- bla@gmail.com
+- blablabla@gmail.com
+lastTimeSent: '2015-11-22T10:04:32.529-08:00'
+periodInDays: 10

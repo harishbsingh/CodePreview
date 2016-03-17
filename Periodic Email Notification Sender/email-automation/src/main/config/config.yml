@@ -1,0 +1,93 @@
+emailsender:
+ emailDir: /Users/bla/blabla/emails/
+ smtpServer: 
+ smtpPort: 
+ emailUser: 
+ emailPassword: 
+
+
+#Thread Pool
+threadPool:
+ corePoolSize: 20
+ maxPoolSize: 20
+
+
+# HTTP-specific options.
+server:
+#  softNofileLimit: 1000
+#  hardNofileLimit: 1000
+  applicationConnectors:
+    - type: http
+      port: 9080
+#    - type: https
+#      port: 8443
+#      keyStorePath: example.keystore
+#      keyStorePassword: example
+#      validateCerts: false
+# this requires the alpn-boot library on the JVM's boot classpath
+#    - type: spdy3
+#      port: 8445
+#      keyStorePath: example.keystore
+#      keyStorePassword: example
+#      validateCerts: false
+  adminConnectors:
+    - type: http
+      port: 9081
+#    - type: https
+#      port: 8444
+#      keyStorePath: example.keystore
+#      keyStorePassword: example
+#      validateCerts: false
+  requestLog:
+      appenders:
+         - type: console
+         - type: file
+           archive: true
+           archivedFileCount: 5
+           currentLogFilename: ./logs/request.log
+           archivedLogFilenamePattern: /var/test/http-test-%d.log
+           timeZone: UTC
+
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+    level: ALL
+    # Sets the level
+    com.rmo: ALL
+    io.dropwizard: ALL
+    javax.mail: ALL
+
+  appenders:
+    - type: console
+      threshold: ALL
+      target: stderr
+
+    - type: file
+      # The file to which current statements will be logged.
+      currentLogFilename: ./logs/automator.log
+
+      # When the log file rotates, the archived log will be renamed to this and gzipped. The
+      # %d is replaced with the previous day (yyyy-MM-dd). Custom rolling windows can be created
+      # by passing a SimpleDateFormat-compatible format as an argument: "%d{yyyy-MM-dd-hh}".
+      archivedLogFilenamePattern: ./logs/automator-%d.log.gz
+
+      # The number of archived files to keep.
+      archivedFileCount: 5
+
+      # The timezone used to format dates. HINT: USE THE DEFAULT, UTC.
+      timeZone: UTC
+
+    - type: syslog
+      # The hostname of the syslog server to which statements will be sent.
+      # N.B.: If this is the local host, the local syslog instance will need to be configured to
+      # listen on an inet socket, not just a Unix socket.
+      host: localhost
+
+      # The syslog facility to which statements will be sent.
+      facility: local0
